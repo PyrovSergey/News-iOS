@@ -28,7 +28,6 @@ class NewsTableViewController: UITableViewController, NetworkProtocol {
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    // test commit
     override func viewDidLoad() {
         super.viewDidLoad()
         
