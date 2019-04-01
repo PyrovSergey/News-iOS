@@ -33,6 +33,7 @@ class CategoriesUIViewController: SwipeMenuViewController, NetworkProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         NetworkManager.instace.getUpdateCategoryLists(listener: self)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     func successRequest(result: [Article], category: String) {
@@ -85,7 +86,7 @@ class CategoriesUIViewController: SwipeMenuViewController, NetworkProtocol {
         return vc
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        self.performSegue(withIdentifier: "goToArticleViewFromCategories", sender: self)
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        self.performSegue(withIdentifier: "goToArticleViewFromCategories", sender: self)
+//    }
 }

@@ -52,6 +52,7 @@ class NetworkManager {
         for category in swipeCategory {
             let params: [String : String] = [
                 "q" : category,
+                "language" : getCurrentCountry(),
                 "sortBy" : "relevancy",
                 "pageSize" : pageSize,
                 "apiKey" : apiKey
@@ -70,13 +71,10 @@ class NetworkManager {
         Alamofire.request(url!, method: .get, parameters: params).responseJSON {
             response in
             if response.result.isSuccess {
-                //print("Success response!")
                 let responseJSON : JSON = JSON(response.result.value!)
                 self.parsingJsonResult(responseJSON, listener, category)
-                //print(responseJSON)
             } else {
                 listener.errorRequest(errorMessage: "Response in errorr \(response.error!)")
-                //print("Response in errorr \(response.error!)")
             }
         }
     }
@@ -89,17 +87,12 @@ class NetworkManager {
                     let article = Article()
                     
                     article.sourceTitle = responseArticle["source"]["name"].string ?? ""
-                    //print("sourceTitle is -->> \(article.sourceTitle)")
                     article.articleTitle = responseArticle["title"].string ?? ""
                     article.articleImageUrl = responseArticle["urlToImage"].string ?? ""
                     article.articleUrl = responseArticle["url"].string ?? ""
-                    //print("article.articleUrl is -->> \(article.articleUrl)")
-                    
                     
                     let publishedAtString = responseArticle["publishedAt"].string ?? ""
-                    //getDateFromApi(date: publishedAtString)
-                    
-                    //print("Дата статьи -->> \(publishedAtDate)")
+
                     article.articlePublicationTime = getDateFromApi(date: publishedAtString).timeAgoSinceNow
                     
                     let newsUrl: URL = URL(string: article.articleUrl)!

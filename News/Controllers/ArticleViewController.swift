@@ -14,20 +14,20 @@ class ArticleViewController: UIViewController, WKNavigationDelegate {
     
     let realm = try! Realm()
     var bookmarksArray : Results<Article>?
+    var addToBookmarksButton: UIBarButtonItem?
     
     var article: Article?
 
-    
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var addToBookmarksButton: UIBarButtonItem!
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
+        //UIBarButtonItem.SystemItem.add
+        addToBookmarksButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.bookmarks, target: self, action: #selector(ArticleViewController.clickAddToBookmarksButton(_:)))
+        self.navigationItem.rightBarButtonItem = addToBookmarksButton
         checkArticleInBookmarks(article: article)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        //navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewDidLoad() {
@@ -63,21 +63,33 @@ class ArticleViewController: UIViewController, WKNavigationDelegate {
         }
     }
     
-    @IBAction func clickBackButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func clickBackButton(_ sender: UIBarButtonItem) {
+//        self.dismiss(animated: true, completion: nil)
+//    }
 
-    @IBAction func clickAddToBookmarksButton(_ sender: UIBarButtonItem) {
-        do {
-            try realm.write {
-                realm.add(article!)
-                //print("Success saving article")
-                addToBookmarksButton.isEnabled = false
+//    @IBAction func clickAddToBookmarksButton(_ sender: UIBarButtonItem) {
+//        do {
+//            try realm.write {
+//                realm.add(article!)
+//                //print("Success saving article")
+//                addToBookmarksButton.isEnabled = false
+//            }
+//        } catch {
+//            print("Error saving article \(error)")
+//        }
+//    }
+    
+    @objc func clickAddToBookmarksButton(_ sender: UIBarButtonItem) {
+                do {
+                    try realm.write {
+                        realm.add(article!)
+                        //print("Success saving article")
+                        addToBookmarksButton?.isEnabled = false
+                    }
+                } catch {
+                    print("Error saving article \(error)")
+                }
             }
-        } catch {
-            print("Error saving article \(error)")
-        }
-    }
     
     func checkArticleInBookmarks(article: Article?) {
         //print("checkArticleInBookmarks")
@@ -85,7 +97,7 @@ class ArticleViewController: UIViewController, WKNavigationDelegate {
         //addToBookmarksButton.isEnabled = !bookmarksArray.contains(article!)
         for bookmark in bookmarksArray {
             if bookmark.articleUrl == article?.articleUrl {
-                addToBookmarksButton.isEnabled = false
+                addToBookmarksButton?.isEnabled = false
                 //print("Find bookmarks")
                 break
             }
@@ -98,5 +110,7 @@ class ArticleViewController: UIViewController, WKNavigationDelegate {
         bookmarksArray = realm.objects(Article.self)
         
     }
+    
+    
 }
 
