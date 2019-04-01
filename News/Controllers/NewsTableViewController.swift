@@ -123,20 +123,17 @@ class NewsTableViewController: UITableViewController, NetworkProtocol {
     private func prepareChangeConnectionListener() {
         ConnectionManager.isReachable { _ in
             NetworkManager.instace.getTopHeadLinesNews(listener: self)
-            //print("isReachable")
             self.gearRefreshControl.gearTintColor = .white
         }
         
         connection.reachability.whenReachable = {
             _ in
-            //print("whenReachable")
             NetworkManager.instace.getTopHeadLinesNews(listener: self)
             self.gearRefreshControl.gearTintColor = .white
         }
         
         connection.reachability.whenUnreachable = {
             _ in
-            //print("whenUnreachable")
             self.showLostConnectionMessage()
             self.gearRefreshControl.gearTintColor = .red
         }
@@ -146,7 +143,6 @@ class NewsTableViewController: UITableViewController, NetworkProtocol {
         ConnectionManager.isUnreachable { _ in
             self.showLostConnectionMessage()
             self.gearRefreshControl.gearTintColor = .red
-            //print("isUnreachable")
         }
     }
     

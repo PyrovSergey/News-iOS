@@ -25,7 +25,6 @@ class CategoriesUIViewController: SwipeMenuViewController, NetworkProtocol {
             arrayControllers[data] = vc
             vc.title = data
             vc.parentController = self
-            //vc.setNewListCategoryAndUpdateUI(articleArray: TemporaryStorage.instace.getCategoryList(categoryName: data))
             self.addChild(vc)
         }
         super.viewDidLoad()
@@ -85,8 +84,4 @@ class CategoriesUIViewController: SwipeMenuViewController, NetworkProtocol {
         vc.didMove(toParent: self)
         return vc
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        self.performSegue(withIdentifier: "goToArticleViewFromCategories", sender: self)
-//    }
 }
