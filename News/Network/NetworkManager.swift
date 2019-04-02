@@ -52,7 +52,7 @@ class NetworkManager {
         for category in swipeCategory {
             let params: [String : String] = [
                 "q" : category,
-                "language" : getCurrentCountry(),
+                "language" : getCurrentLanguage(),
                 "sortBy" : "relevancy",
                 "pageSize" : pageSize,
                 "apiKey" : apiKey
@@ -106,7 +106,12 @@ class NetworkManager {
         listener.successRequest(result: resultArrayArticles, category: category)
     }
     
+    private func getCurrentLanguage() -> String {
+        return String(Locale.preferredLanguages[0].lowercased().dropLast(3))
+    }
+    
     private func getCurrentCountry() -> String {
+        print("LANGUAGE ------->>>> \(Locale.preferredLanguages[0].lowercased().dropLast(3))")
         var defaultCountry: String = "us"
         let arrayCountry = ["ae", "ar", "at", "au", "be", "bg", "br", "ca", "ch", "cn", "co", "cu", "cz", "de", "eg", "fr", "gb", "gr", "hk", "hu", "id", "ie", "il", "in", "it", "jp", "kr", "lt", "lv", "ma", "mx", "my", "ng", "nl", "no", "nz", "ph", "pl", "pt", "ro", "rs", "ru", "sa", "se", "sg", "si", "sk", "th", "tr", "tw", "ua", "us", "ve", "za"]
         if let countryCode = (Locale.current as NSLocale).object(forKey: .countryCode) as? String {
@@ -114,8 +119,11 @@ class NetworkManager {
                 defaultCountry = countryCode.lowercased()
             }
         }
+        print("COUNTRY  ------->>>> \(defaultCountry)")
         return defaultCountry
     }
+    
+    
     
     private func getDateFromApi(date: String) -> Date {
         var parsingString = date
