@@ -70,11 +70,10 @@ class ContentTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print("\(newsArray[indexPath.row].articleUrl)")
         if let storyboard = self.parent?.storyboard {
-            let newViewController = storyboard.instantiateViewController(withIdentifier: "ArticleViewController") as? ArticleViewController
-            newViewController?.article = newsArray[indexPath.row]
-            self.present(newViewController!, animated: true, completion: nil)
+            let articleViewController = storyboard.instantiateViewController(withIdentifier: "ArticleViewController") as! ArticleViewController
+            articleViewController.article = newsArray[indexPath.row].copy() as? Article
+            navigationController!.pushViewController(articleViewController, animated: true)
         }
     }
     

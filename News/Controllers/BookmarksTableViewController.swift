@@ -67,7 +67,6 @@ class BookmarksTableViewController: UITableViewController, SwipeTableViewCellDel
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToArticleViewFromBookmarks", sender: self)
-        //self.newsTableView.endEditing(true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

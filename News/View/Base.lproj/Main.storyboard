@@ -45,7 +45,6 @@
                             <outlet property="delegate" destination="dPX-fN-7ZR" id="rEU-Kh-ujq"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="News" id="aX8-e1-yqQ"/>
                     <navigationItem key="navigationItem" title="News" id="eRO-2L-rZB"/>
                     <connections>
                         <outlet property="newsTableView" destination="nAP-o9-huo" id="AWX-jn-KTL"/>
@@ -62,7 +61,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1602.8985507246377" y="-335.054347826087"/>
+            <point key="canvasLocation" x="2510.144927536232" y="-335.054347826087"/>
         </scene>
         <!--Article View Controller-->
         <scene sceneID="NZG-g3-MMh">
@@ -73,8 +72,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Iu-qh-nFn">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7Iu-qh-nFn" secondAttribute="height" multiplier="414:623" id="iie-mx-Oeg"/>
+                                </constraints>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
@@ -86,23 +88,6 @@
                                     <constraint firstAttribute="width" constant="200" id="cOY-yt-9Pu"/>
                                 </constraints>
                             </progressView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ocM-yh-TEt">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                                <items>
-                                    <navigationItem id="a7k-lR-Ird">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="iMa-ut-0XA">
-                                            <connections>
-                                                <action selector="clickBackButton:" destination="wrF-X3-PMb" id="gNl-YK-wVa"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="15g-1z-CsM">
-                                            <connections>
-                                                <action selector="clickAddToBookmarksButton:" destination="wrF-X3-PMb" id="XZL-wp-50u"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cE-yh-nJA">
                                 <rect key="frame" x="207" y="345.66666666666669" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -112,22 +97,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7Iu-qh-nFn" firstAttribute="leading" secondItem="kGo-WX-7ZB" secondAttribute="leading" id="3dO-Xa-a6B"/>
+                            <constraint firstItem="7Iu-qh-nFn" firstAttribute="top" secondItem="unT-WU-1Qh" secondAttribute="top" constant="64" id="7WC-ZK-Zz3"/>
                             <constraint firstItem="2cE-yh-nJA" firstAttribute="centerX" secondItem="unT-WU-1Qh" secondAttribute="centerX" id="Ac0-eN-aBb"/>
                             <constraint firstItem="2cE-yh-nJA" firstAttribute="centerY" secondItem="unT-WU-1Qh" secondAttribute="centerY" constant="-22.5" id="GVy-Cu-TDj"/>
-                            <constraint firstItem="7Iu-qh-nFn" firstAttribute="top" secondItem="ocM-yh-TEt" secondAttribute="bottom" id="HiZ-pY-Mch"/>
-                            <constraint firstItem="7Iu-qh-nFn" firstAttribute="trailing" secondItem="kGo-WX-7ZB" secondAttribute="trailing" id="JDp-Rs-dpr"/>
-                            <constraint firstItem="ocM-yh-TEt" firstAttribute="trailing" secondItem="kGo-WX-7ZB" secondAttribute="trailing" id="KtH-Zu-YaR"/>
+                            <constraint firstAttribute="bottom" secondItem="7Iu-qh-nFn" secondAttribute="bottom" constant="49" id="KDx-Ep-pto"/>
                             <constraint firstItem="Gyz-2n-JmS" firstAttribute="centerX" secondItem="unT-WU-1Qh" secondAttribute="centerX" id="NM7-9c-zq3"/>
-                            <constraint firstItem="7Iu-qh-nFn" firstAttribute="leading" secondItem="kGo-WX-7ZB" secondAttribute="leading" id="d6d-GQ-Yng"/>
-                            <constraint firstItem="7Iu-qh-nFn" firstAttribute="bottom" secondItem="kGo-WX-7ZB" secondAttribute="bottom" id="gcW-u2-Wfc"/>
-                            <constraint firstItem="ocM-yh-TEt" firstAttribute="leading" secondItem="kGo-WX-7ZB" secondAttribute="leading" id="pgS-zx-swr"/>
+                            <constraint firstItem="7Iu-qh-nFn" firstAttribute="trailing" secondItem="kGo-WX-7ZB" secondAttribute="trailing" id="t1g-C9-AVb"/>
                             <constraint firstItem="Gyz-2n-JmS" firstAttribute="centerY" secondItem="unT-WU-1Qh" secondAttribute="centerY" id="tYt-PM-BE0"/>
-                            <constraint firstItem="ocM-yh-TEt" firstAttribute="top" secondItem="kGo-WX-7ZB" secondAttribute="top" id="y9r-Vo-mUG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kGo-WX-7ZB"/>
                     </view>
                     <connections>
-                        <outlet property="addToBookmarksButton" destination="15g-1z-CsM" id="rX8-uB-irm"/>
                         <outlet property="progressLabel" destination="2cE-yh-nJA" id="6QY-LI-lp6"/>
                         <outlet property="progressView" destination="Gyz-2n-JmS" id="z93-ad-jdC"/>
                         <outlet property="webView" destination="7Iu-qh-nFn" id="dae-ju-kV3"/>
@@ -135,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HvE-Ez-AZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2596.875" y="357.04225352112678"/>
+            <point key="canvasLocation" x="3479.7101449275365" y="357.88043478260875"/>
         </scene>
         <!--Bookmarks-->
         <scene sceneID="nrd-9G-8Zi">
@@ -160,7 +141,6 @@
                             <outlet property="delegate" destination="J99-NL-CwE" id="bem-uw-RIJ"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Bookmarks" id="wbB-31-ASs"/>
                     <navigationItem key="navigationItem" title="Bookmarks" id="29H-rL-8Ql"/>
                     <connections>
                         <segue destination="wrF-X3-PMb" kind="show" identifier="goToArticleViewFromBookmarks" id="tRI-kT-xxt"/>
@@ -168,7 +148,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggd-q8-P32" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1602.8985507246377" y="1069.5652173913045"/>
+            <point key="canvasLocation" x="2510.144927536232" y="1069.5652173913045"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -180,9 +160,9 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="dPX-fN-7ZR" kind="relationship" relationship="viewControllers" id="g1U-XF-Wdc"/>
-                        <segue destination="QIj-a6-3hP" kind="relationship" relationship="viewControllers" id="BOe-kN-wEg"/>
-                        <segue destination="J99-NL-CwE" kind="relationship" relationship="viewControllers" id="vCp-8B-1lE"/>
+                        <segue destination="uJe-4b-CQb" kind="relationship" relationship="viewControllers" id="g1U-XF-Wdc"/>
+                        <segue destination="jcm-h9-AL4" kind="relationship" relationship="viewControllers" id="BOe-kN-wEg"/>
+                        <segue destination="vHO-oB-QH0" kind="relationship" relationship="viewControllers" id="vCp-8B-1lE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -199,17 +179,75 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Wr4-24-BRE"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Categories" id="x3z-d5-7qj"/>
                     <navigationItem key="navigationItem" title="Category" id="qVv-kH-ZZU"/>
-                    <connections>
-                        <segue destination="wrF-X3-PMb" kind="show" identifier="goToArticleViewFromCategories" id="JAY-Eu-9vI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXE-gb-2ef" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2510.144927536232" y="357.88043478260875"/>
+        </scene>
+        <!--Categories-->
+        <scene sceneID="n2y-LR-JD8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jcm-h9-AL4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Categories" image="categories" landscapeImage="categories" selectedImage="categories" id="x3z-d5-7qj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QaS-2o-W13">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QIj-a6-3hP" kind="relationship" relationship="rootViewController" id="oAz-19-p0K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2bR-FU-gfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="1602.8985507246377" y="357.88043478260875"/>
         </scene>
+        <!--News-->
+        <scene sceneID="ZNP-9o-eRa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uJe-4b-CQb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="News" image="news" landscapeImage="news" selectedImage="news" id="aX8-e1-yqQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E3g-KG-4cH">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dPX-fN-7ZR" kind="relationship" relationship="rootViewController" id="T3P-at-3Z1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tef-xE-GNL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1602.8985507246377" y="-335.054347826087"/>
+        </scene>
+        <!--Bookmarks-->
+        <scene sceneID="Ycv-C3-gWD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vHO-oB-QH0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmarks" landscapeImage="bookmarks" selectedImage="bookmarks" id="wbB-31-ASs"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BXE-3Q-Ah8">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="J99-NL-CwE" kind="relationship" relationship="rootViewController" id="mq8-ak-2aJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aig-hT-g4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1602.8985507246377" y="1069.5652173913045"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="bookmarks" width="29" height="29"/>
+        <image name="categories" width="29" height="29"/>
+        <image name="news" width="29" height="29"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tRI-kT-xxt"/>
     </inferredMetricsTieBreakers>

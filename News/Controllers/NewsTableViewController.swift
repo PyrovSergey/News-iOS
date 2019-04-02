@@ -51,7 +51,6 @@ class NewsTableViewController: UITableViewController, NetworkProtocol {
         gearRefreshControl.scrollViewDidScroll(scrollView)
     }
     
-    
     @objc func refresh() {
         newsArray.removeAll()
         newsTableView.reloadData()
@@ -88,7 +87,7 @@ class NewsTableViewController: UITableViewController, NetworkProtocol {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destintionVC = segue.destination as! ArticleViewController
         if let indexPath = tableView.indexPathForSelectedRow {
-            destintionVC.article = newsArray[indexPath.row]
+            destintionVC.article = newsArray[indexPath.row].copy() as? Article
         }
     }
     
@@ -98,13 +97,11 @@ class NewsTableViewController: UITableViewController, NetworkProtocol {
         spiner.stopAnimating()
         stopGearRefreshAnimation()
         newsTableView.reloadData()
-        //print("successRequest!!!!")
     }
     
     func errorRequest(errorMessage: String) {
         print(errorMessage)
         gearRefreshControl.gearTintColor = .red
-        //spiner.stopAnimating()
     }
     
     private func stopGearRefreshAnimation() {
@@ -126,20 +123,17 @@ class NewsTableViewController: UITableViewController, NetworkProtocol {
     private func prepareChangeConnectionListener() {
         ConnectionManager.isReachable { _ in
             NetworkManager.instace.getTopHeadLinesNews(listener: self)
-            //print("isReachable")
             self.gearRefreshControl.gearTintColor = .white
         }
         
         connection.reachability.whenReachable = {
             _ in
-            //print("whenReachable")
             NetworkManager.instace.getTopHeadLinesNews(listener: self)
             self.gearRefreshControl.gearTintColor = .white
         }
         
         connection.reachability.whenUnreachable = {
             _ in
-            //print("whenUnreachable")
             self.showLostConnectionMessage()
             self.gearRefreshControl.gearTintColor = .red
         }
@@ -149,7 +143,6 @@ class NewsTableViewController: UITableViewController, NetworkProtocol {
         ConnectionManager.isUnreachable { _ in
             self.showLostConnectionMessage()
             self.gearRefreshControl.gearTintColor = .red
-            //print("isUnreachable")
         }
     }
     

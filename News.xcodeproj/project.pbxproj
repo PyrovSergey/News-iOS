@@ -139,8 +139,8 @@
 		951825DC2252332900C36B5C /* Swipe Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
-				951825E42252564C00C36B5C /* SwipeCustomNewsCell.xib */,
 				951825E6225258E800C36B5C /* SwipeCustomNewsCell.swift */,
+				951825E42252564C00C36B5C /* SwipeCustomNewsCell.xib */,
 			);
 			path = "Swipe Custom Cell";
 			sourceTree = "<group>";
