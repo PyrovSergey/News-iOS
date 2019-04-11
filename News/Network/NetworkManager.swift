@@ -89,15 +89,17 @@ class NetworkManager {
                     article.sourceTitle = responseArticle["source"]["name"].string ?? ""
                     article.articleTitle = responseArticle["title"].string ?? ""
                     article.articleImageUrl = responseArticle["urlToImage"].string ?? ""
-                    article.articleUrl = responseArticle["url"].string ?? ""
+                    article.articleUrl = responseArticle["url"].string ?? "none"
                     
                     let publishedAtString = responseArticle["publishedAt"].string ?? ""
 
                     article.articlePublicationTime = getDateFromApi(date: publishedAtString).timeAgoSinceNow
                     
-                    let newsUrl: URL = URL(string: article.articleUrl)!
-                    let baseSourceUrl = newsUrl.host
-                    article.sourceImageUrl = "https://besticon-demo.herokuapp.com/icon?url=\(baseSourceUrl!)&size=32..64..64"
+                    
+                    if let newsUrl: URL = URL(string: article.articleUrl) {
+                        let baseSourceUrl = newsUrl.host
+                        article.sourceImageUrl = "https://besticon-demo.herokuapp.com/icon?url=\(baseSourceUrl!)&size=32..64..64"
+                    }
                     resultArrayArticles.append(article)
                 }
             }

@@ -13,7 +13,7 @@
         <!--News-->
         <scene sceneID="cIk-vr-NcT">
             <objects>
-                <tableViewController id="dPX-fN-7ZR" customClass="NewsTableViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="dPX-fN-7ZR" customClass="NewsTableViewController" customModule="News_Aggregator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nAP-o9-huo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                             </scopeButtonTitles>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" id="2PP-rL-w8p" customClass="CustomNewsCell" customModule="News" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" id="2PP-rL-w8p" customClass="CustomNewsCell" customModule="News_Aggregator" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="84" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2PP-rL-w8p" id="XYb-Wb-dRo">
@@ -66,50 +66,39 @@
         <!--Article View Controller-->
         <scene sceneID="NZG-g3-MMh">
             <objects>
-                <viewController storyboardIdentifier="ArticleViewController" id="wrF-X3-PMb" customClass="ArticleViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArticleViewController" id="wrF-X3-PMb" customClass="ArticleViewController" customModule="News_Aggregator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="unT-WU-1Qh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Iu-qh-nFn">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                            <wkWebView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="7Iu-qh-nFn">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="7Iu-qh-nFn" secondAttribute="height" multiplier="414:623" id="iie-mx-Oeg"/>
+                                    <constraint firstAttribute="width" secondItem="7Iu-qh-nFn" secondAttribute="height" multiplier="414:623" constant="-32.561797752809014" id="iie-mx-Oeg"/>
                                 </constraints>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" audio="YES" video="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Gyz-2n-JmS">
-                                <rect key="frame" x="107" y="367" width="200" height="2"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="cOY-yt-9Pu"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="64" width="414" height="2"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cE-yh-nJA">
-                                <rect key="frame" x="207" y="345.66666666666669" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7Iu-qh-nFn" firstAttribute="leading" secondItem="kGo-WX-7ZB" secondAttribute="leading" id="3dO-Xa-a6B"/>
-                            <constraint firstItem="7Iu-qh-nFn" firstAttribute="top" secondItem="unT-WU-1Qh" secondAttribute="top" constant="64" id="7WC-ZK-Zz3"/>
-                            <constraint firstItem="2cE-yh-nJA" firstAttribute="centerX" secondItem="unT-WU-1Qh" secondAttribute="centerX" id="Ac0-eN-aBb"/>
-                            <constraint firstItem="2cE-yh-nJA" firstAttribute="centerY" secondItem="unT-WU-1Qh" secondAttribute="centerY" constant="-22.5" id="GVy-Cu-TDj"/>
-                            <constraint firstAttribute="bottom" secondItem="7Iu-qh-nFn" secondAttribute="bottom" constant="49" id="KDx-Ep-pto"/>
-                            <constraint firstItem="Gyz-2n-JmS" firstAttribute="centerX" secondItem="unT-WU-1Qh" secondAttribute="centerX" id="NM7-9c-zq3"/>
+                            <constraint firstAttribute="trailing" secondItem="Gyz-2n-JmS" secondAttribute="trailing" id="9ot-2t-8Ce"/>
+                            <constraint firstItem="Gyz-2n-JmS" firstAttribute="top" secondItem="kGo-WX-7ZB" secondAttribute="top" id="C08-I9-t2r"/>
+                            <constraint firstAttribute="bottom" secondItem="7Iu-qh-nFn" secondAttribute="bottom" id="KDx-Ep-pto"/>
+                            <constraint firstItem="Gyz-2n-JmS" firstAttribute="leading" secondItem="unT-WU-1Qh" secondAttribute="leading" id="SaX-Un-EQ3"/>
+                            <constraint firstItem="7Iu-qh-nFn" firstAttribute="top" secondItem="kGo-WX-7ZB" secondAttribute="top" id="d8u-7W-sHp"/>
                             <constraint firstItem="7Iu-qh-nFn" firstAttribute="trailing" secondItem="kGo-WX-7ZB" secondAttribute="trailing" id="t1g-C9-AVb"/>
-                            <constraint firstItem="Gyz-2n-JmS" firstAttribute="centerY" secondItem="unT-WU-1Qh" secondAttribute="centerY" id="tYt-PM-BE0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kGo-WX-7ZB"/>
                     </view>
                     <connections>
-                        <outlet property="progressLabel" destination="2cE-yh-nJA" id="6QY-LI-lp6"/>
                         <outlet property="progressView" destination="Gyz-2n-JmS" id="z93-ad-jdC"/>
                         <outlet property="webView" destination="7Iu-qh-nFn" id="dae-ju-kV3"/>
                     </connections>
@@ -121,13 +110,13 @@
         <!--Bookmarks-->
         <scene sceneID="nrd-9G-8Zi">
             <objects>
-                <tableViewController id="J99-NL-CwE" customClass="BookmarksTableViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="J99-NL-CwE" customClass="BookmarksTableViewController" customModule="News_Aggregator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MhQ-2P-FLa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="swipeNewsCell" id="PTF-uX-0EH" customClass="SwipeCustomNewsCell" customModule="News" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="swipeNewsCell" id="PTF-uX-0EH" customClass="SwipeCustomNewsCell" customModule="News_Aggregator" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PTF-uX-0EH" id="GzM-FY-cgg">
@@ -172,7 +161,7 @@
         <!--Category-->
         <scene sceneID="cvk-n6-7Ql">
             <objects>
-                <viewController id="QIj-a6-3hP" customClass="CategoriesUIViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QIj-a6-3hP" customClass="CategoriesUIViewController" customModule="News_Aggregator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2ac-v7-Ha6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

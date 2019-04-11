@@ -20,7 +20,6 @@ class ArticleViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var webView: WKWebView!
-    @IBOutlet weak var progressLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         addToBookmarksButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.bookmarks, target: self, action: #selector(ArticleViewController.clickAddToBookmarksButton(_:)))
@@ -30,14 +29,15 @@ class ArticleViewController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView.isHidden = true
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.setProgress(0.0, animated: true)
         self.tabBarController?.tabBar.isHidden = true
+        
         if let url = URL(string: (article?.articleUrl)!) {
             webView.load(URLRequest(url: url))
             webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
             webView.allowsBackForwardNavigationGestures = true
+            webView.configuration.allowsInlineMediaPlayback = false
         }
         load()
     }
@@ -48,14 +48,10 @@ class ArticleViewController: UIViewController, WKNavigationDelegate {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if Float(webView.estimatedProgress) == 1.0 {
-            webView.isHidden = false
             progressView.isHidden = true
-            progressLabel.isHidden = true
+
         }
         if keyPath == "estimatedProgress" {
-            let progress = Float(webView.estimatedProgress)
-            let result = (progress * 100.0)
-            progressLabel.text = String("\(Int(result))%")
             progressView!.progress = Float(webView.estimatedProgress)
         }
     }
@@ -83,7 +79,6 @@ class ArticleViewController: UIViewController, WKNavigationDelegate {
     
     private func load() {
         bookmarksArray = realm.objects(Article.self)
-        
     }
 }
 

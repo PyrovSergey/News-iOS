@@ -16,8 +16,9 @@ class CategoriesUIViewController: SwipeMenuViewController, NetworkProtocol {
     private let arraySwipe = ["General", "Entertainment", "Sport", "Technology", "Health", "Business"]
     private var arrayControllers = [String : ContentTableViewController]()
     
-    var options = SwipeMenuViewOptions()
-    var dataCount: Int = 6
+    private var options = SwipeMenuViewOptions()
+    private var dataCount: Int = 6
+    private var firstOpening: Bool = true
     
     override func viewDidLoad() {
         arraySwipe.forEach { data in
@@ -33,6 +34,14 @@ class CategoriesUIViewController: SwipeMenuViewController, NetworkProtocol {
     override func viewWillAppear(_ animated: Bool) {
         NetworkManager.instace.getUpdateCategoryLists(listener: self)
         self.tabBarController?.tabBar.isHidden = false
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if firstOpening {
+            reload()
+            firstOpening = false
+        }
     }
     
     func successRequest(result: [Article], category: String) {

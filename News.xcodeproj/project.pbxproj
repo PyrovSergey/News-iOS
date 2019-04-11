@@ -47,7 +47,7 @@
 		951825DE225238FC00C36B5C /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		951825E42252564C00C36B5C /* SwipeCustomNewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwipeCustomNewsCell.xib; sourceTree = "<group>"; };
 		951825E6225258E800C36B5C /* SwipeCustomNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCustomNewsCell.swift; sourceTree = "<group>"; };
-		953A785A2251184100A7F5D2 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		953A785A2251184100A7F5D2 /* News Aggregator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "News Aggregator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		953A785D2251184100A7F5D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		953A785F2251184100A7F5D2 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		953A78622251184100A7F5D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 		953A785B2251184100A7F5D2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				953A785A2251184100A7F5D2 /* News.app */,
+				953A785A2251184100A7F5D2 /* News Aggregator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,9 +193,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		953A78592251184100A7F5D2 /* News */ = {
+		953A78592251184100A7F5D2 /* News Aggregator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 953A786F2251184200A7F5D2 /* Build configuration list for PBXNativeTarget "News" */;
+			buildConfigurationList = 953A786F2251184200A7F5D2 /* Build configuration list for PBXNativeTarget "News Aggregator" */;
 			buildPhases = (
 				F299B912069FF38DDFEAC86E /* [CP] Check Pods Manifest.lock */,
 				953A78562251184100A7F5D2 /* Sources */,
@@ -207,9 +207,9 @@
 			);
 			dependencies = (
 			);
-			name = News;
+			name = "News Aggregator";
 			productName = News;
-			productReference = 953A785A2251184100A7F5D2 /* News.app */;
+			productReference = 953A785A2251184100A7F5D2 /* News Aggregator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -240,7 +240,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				953A78592251184100A7F5D2 /* News */,
+				953A78592251184100A7F5D2 /* News Aggregator */,
 			);
 		};
 /* End PBXProject section */
@@ -497,10 +497,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Sergey.News;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Sergey.NewsAggregator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -516,10 +516,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Sergey.News;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Sergey.NewsAggregator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -535,7 +535,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		953A786F2251184200A7F5D2 /* Build configuration list for PBXNativeTarget "News" */ = {
+		953A786F2251184200A7F5D2 /* Build configuration list for PBXNativeTarget "News Aggregator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				953A78702251184200A7F5D2 /* Debug */,
